@@ -1,4 +1,4 @@
-.game-info-container {
+.game-container {
     width: 50%;
     border: 3px solid darkgray;
     display: flex;
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.game-info-container:hover 
+.game-container:hover 
 {
     background-color: red;
     border: 3px solid black;

@@ -2,7 +2,7 @@ import './Home.css'
 import React, {useState, useEffect} from 'react'
 import { SERVER_URL, GAMEDAYFORMATTER, ENDPOINTS } from '../utils'
 import axios from 'axios'
-import gameInfoContainer from '../Components/gameInfoContainer';
+import GameContainer from '../Components/gameContainer'
 
 const Home = () => 
 {
@@ -50,7 +50,7 @@ const Home = () =>
         <h1>
         {GAMEDAYFORMATTER(gameDay)} 
         </h1>
-        <p>{todayGames.length}</p>
+        <GameContainer />
         </>
     )
 }
