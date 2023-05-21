@@ -3,4 +3,9 @@ nav {
     color: white;
     width: 100%;
     margin-bottom: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 6px solid green;
 }

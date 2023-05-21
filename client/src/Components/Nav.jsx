@@ -6,8 +6,17 @@ const Nav = () => {
     return (
         <nav>
             <h1>
-                Nav
+                Today's games
             </h1>
+            <h1>
+                Search
+            </h1>
+            <h1>
+                Preferences
+            </h1>       
+            <h1>
+                About
+            </h1>                  
         </nav>
     )
 }

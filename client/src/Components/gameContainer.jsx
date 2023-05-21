@@ -3,12 +3,11 @@ import './gameContainer.css'
 import LogoFormatter from "./logoFormatter"
 
 const GameContainer = ({game}) => 
-
 {
     const homeTeam = game["homeTeam"]["teamTricode"]
     const awayTeam = game["awayTeam"]["teamTricode"]
     const gameStatusText = game["gameStatusText"]
-    const score = `${game["homeTeam"]["score"]}-${game["awayTeam"]["score"]}`
+    const score = game["gameStatus"] === 1? '': `${game["homeTeam"]["score"]}-${game["awayTeam"]["score"]}`
 
     return (
         <div className="game-container">
@@ -18,6 +17,7 @@ const GameContainer = ({game}) =>
             <div className="score-container">
                 <h2>{score}</h2>
                 <h3>{gameStatusText}</h3>
+                <p>{game["seriesText"]}</p>
             </div>
             <div className="team-container">
                 <LogoFormatter tricode={homeTeam} />
