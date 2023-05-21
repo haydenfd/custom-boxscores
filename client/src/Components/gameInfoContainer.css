@@ -1,0 +1,33 @@
+.game-info-container {
+    width: 50%;
+    border: 3px solid darkgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.game-info-container:hover 
+{
+    background-color: red;
+    border: 3px solid black;
+}
+
+.team-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.score-time-container {
+    flex:2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
