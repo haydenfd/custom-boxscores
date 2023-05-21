@@ -50,7 +50,9 @@ const Home = () =>
         <h1>
         {GAMEDAYFORMATTER(gameDay)} 
         </h1>
-        <GameContainer />
+        {todayGames.length > 0 && todayGames.map((game) => 
+        <GameContainer game={game}/>
+        )}
         </>
     )
 }
