@@ -38,13 +38,13 @@ const mapTricodeToLogo = (tricode, size=86) =>
 
 }
 
-const LogoFormatter = ({tricode}) => {
+const LogoFormatter = ({tricode, size=86}) => {
 
     return (
         <>
-            {mapTricodeToLogo(tricode)}
-            <h2 style={{"textDecoration":'none'}}
-            >{tricode}</h2>
+            {mapTricodeToLogo(tricode, size)}
+            {/* <h2 style={{"textDecoration":'none'}}
+            >{tricode}</h2> */}
         </>
     )
 }

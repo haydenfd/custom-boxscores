@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import axios from 'axios'
 import { ENDPOINTS, SERVER_URL} from '../utils'
+import GameTotalsBox from '../Components/gameTotalsBox'
 
 const GameDetails = () => 
 {
@@ -15,6 +16,7 @@ const GameDetails = () =>
   const {gameId} = useParams()
 
   const [players, setPlayers] = useState([])
+  const [gameData, setGameData] = useState({})
 
   const getPlayerStats = (homeTeam) => {
 
@@ -23,10 +25,6 @@ const GameDetails = () =>
       const player = homeTeam["players"][p]
       setPlayers((prev) => [...prev, player["name"]])
     }
-    // {
-    //   console.log(player)
-    //   setPlayers((prev) => [...prev,player["nameI"]])
-    // }
     
   }
 
@@ -38,11 +36,9 @@ const GameDetails = () =>
     {
         let data = response.data
         data = data["game"]
+        setGameData(data)
         let homeTeam = data["homeTeam"]
-        console.log(homeTeam)
         getPlayerStats(homeTeam)
-
-
     })
   }
 
@@ -51,10 +47,9 @@ const GameDetails = () =>
   }, [])
 
   return (
-    <div>
-        <h1>
-            {gameId}
-        </h1>
+    <div style={{"width":'80%', 'display':'flex','flexDirection':'column', 'alignItems': 'center', 'gap':'50px'}}>
+        <GameTotalsBox game={gameData}/>
+        <h1>{gameData["attendance"]}</h1>
         <ul>
           {players.map((player) => 
           {
