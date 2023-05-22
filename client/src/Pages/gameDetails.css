@@ -1,4 +1,50 @@
 table {
     border: 2px solid black;
     text-align: center;
+    width: 80%;
+}
+
+.game-totals-box {
+    background-color: grey;
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.teams-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-box {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    text-transform: uppercase;
+    color: white;
+    font-size: 26px;
+}
+
+.away-team-box {
+    background-color: #007A33;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.home-team-box {
+    background-color: #98002E;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
 }

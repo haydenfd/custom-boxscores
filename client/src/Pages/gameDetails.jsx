@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './gameDetails.css'
+import LogoFormatter from '../Components/logoFormatter'
+
+
 import {
   Link, 
   useNavigate,
@@ -10,20 +13,32 @@ import axios from 'axios'
 import { ENDPOINTS, SERVER_URL} from '../utils'
 import GameTotalsBox from '../Components/gameTotalsBox'
 
+
 const GameDetails = () => 
 {
   const navigate = useNavigate()
   const {gameId} = useParams()
 
-  const [players, setPlayers] = useState([])
+  const [homePlayers, setHomePlayers] = useState([])
+  const [awayPlayers, setAwayPlayers] = useState([])
   const [gameData, setGameData] = useState({})
 
-  const getPlayerStats = (homeTeam) => {
+  const getHomePlayerStats = (homeTeam) => {
 
     for (let p = 0; p < homeTeam["players"].length; p++)
     {
       const player = homeTeam["players"][p]
-      setPlayers((prev) => [...prev, player["name"]])
+      setHomePlayers((prev) => [...prev, player])
+    }
+    
+  }
+
+  const getAwayPlayerStats = (awayTeam) => {
+
+    for (let p = 0; p < awayTeam["players"].length; p++)
+    {
+      const player = awayTeam["players"][p]
+      setAwayPlayers((prev) => [...prev, player])
     }
     
   }
@@ -38,7 +53,9 @@ const GameDetails = () =>
         data = data["game"]
         setGameData(data)
         let homeTeam = data["homeTeam"]
-        getPlayerStats(homeTeam)
+        let awayTeam = data["awayTeam"]
+        getHomePlayerStats(homeTeam)
+        getAwayPlayerStats(awayTeam)
     })
   }
 
@@ -47,15 +64,98 @@ const GameDetails = () =>
   }, [])
 
   return (
-    <div style={{"width":'80%', 'display':'flex','flexDirection':'column', 'alignItems': 'center', 'gap':'50px'}}>
-        {gameData && <GameTotalsBox game={gameData}/>}
+    <div style={{"width":'90%', 'display':'flex','flexDirection':'column', 'alignItems': 'center', 'gap':'50px'}}>
+{/*         
+        <div className='game-totals-box'>
+          <div className="teams-box away-team-box">
+            <LogoFormatter tricode={gameData.awayTeam.teamTricode} />
+          </div>
+          <div className="score-box">
+            <h1>
+              {`${gameData.awayTeam.score} - ${gameData.homeTeam.score}`}
+            </h1>
+            <h2>
+              {gameData.gameStatusText}
+              </h2>
+          </div>
+          <div className="teams-box home-team-box">
+            <LogoFormatter tricode={gameData.homeTeam.teamTricode} />
+            <h1>Hayden</h1>
+            </div>
+        </div> */}
+        {/* {gameData.awayTeam && gameData (
+          <div className="game-totals-box">
+            {gameData.awayTeam.score}
+          </div>
+        )} */}
+
+        {
+          gameData && gameData.awayTeam && gameData.homeTeam && (
+            <div className='game-totals-box'>
+            <div className="teams-box away-team-box">
+              <LogoFormatter tricode={gameData.awayTeam.teamTricode} />
+              <h3>{gameData.awayTeam.teamCity}</h3>
+              <h3>{gameData.awayTeam.teamName}</h3>
+            </div>
+            <div className="score-box">
+              <h1>
+                {`${gameData.awayTeam.score} - ${gameData.homeTeam.score}`}
+              </h1>
+              <h2>
+                {gameData.gameStatusText}
+                </h2>
+            </div>
+            <div className="teams-box home-team-box">
+              <LogoFormatter tricode={gameData.homeTeam.teamTricode} />
+              <h3>{gameData.homeTeam.teamCity}</h3>
+              <h3>{gameData.homeTeam.teamName}</h3>
+              </div>
+          </div>
+          )
+        }
         <table>
-          <th>Name</th>
-          {players.map((player) => 
+          <tr>
+            <th>Name</th>
+            <th>Minutes</th>
+            <th>Points</th>
+          </tr>
+          {homePlayers.map((player) => 
           {
             return (
             <tr>
-              {player}
+                <td>
+                {player.name}
+                </td>
+                <td>
+                {player.statistics.plus}
+                </td>
+                <td>
+                {player.statistics.minutes}
+                </td>
+              </tr>
+            )
+          })}
+        </table>
+
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Minutes</th>
+            <th>Points</th>
+        </tr>
+          {awayPlayers.map((player) => 
+          {
+            return (
+            <tr>
+              <td>
+              {player.name}
+              </td>
+              <td>
+              {player.statistics.plus}
+              </td>
+              <td>
+              {player.statistics.minutes}
+              </td>
             </tr>
             )
           })}
