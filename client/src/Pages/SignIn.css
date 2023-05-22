@@ -1,0 +1,21 @@
+.sign-in-box-container {
+    width: 80%;
+    margin-top: 30px;
+    border: 3px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+}
+
+.sign-in-box-p {
+    text-align: left;
+    font-size: 20px;
+}
+
+#signInDiv {
+   margin: auto;
+   transform: scale(1.4);
+   margin-bottom: 12px;
+}

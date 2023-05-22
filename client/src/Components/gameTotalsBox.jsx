@@ -14,7 +14,6 @@ const GameTotalsBox = ({game}) =>
                 <LogoFormatter tricode={game["awayTeam"]["teamTricode"]} size={120}/>
                 <h3 className='team-name-upper'>{`${game["awayTeam"]["teamCity"]}`}</h3>
                 <h3 className='team-name-upper'>{`${game["awayTeam"]["teamName"]}`}</h3>
-                {/* <h3 className='team-name-upper'>{`${game["awayTeam"]["teamCity"]} ${game["awayTeam"]["teamName"]}`}</h3> */}
             </div>
             <div className="teams-score-wrapper">
                 <h2>{score}</h2>

@@ -13,3 +13,6 @@
 - Add an alias.txt script for loading all sorts of alias commands
 - Add tabular layout for game displays
 - Add preference form
+
+ID = 24437569456-29o4ejhmer5ebfmg3faded33g61kdp58.apps.googleusercontent.com
+SECRET = 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
