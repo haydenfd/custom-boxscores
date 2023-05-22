@@ -13,6 +13,7 @@ const GameContainer = ({game}) =>
         <div className="game-container">
             <div className="team-container">
                 <LogoFormatter tricode={awayTeam} />
+                <h3>{awayTeam}</h3>
             </div>
             <div className="score-container">
                 <h2>{score}</h2>
@@ -21,6 +22,7 @@ const GameContainer = ({game}) =>
             </div>
             <div className="team-container">
                 <LogoFormatter tricode={homeTeam} />
+                <h3>{homeTeam}</h3>
             </div>
         </div>
     )

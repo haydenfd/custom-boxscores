@@ -44,10 +44,30 @@ const MAPTRICODETOICON = (tricodeString) =>
     }
 }
 
+let STATS_PREFERENCES = [
+    "MINS",
+    "PTS",
+    "FG",
+    "FG %",
+    "FT",
+    "FT %",
+    "3PT", 
+    "3PT %",
+    "AST",
+    "REB",
+    "OREB",
+    "DREB",
+    "STL",
+    "BLK",
+    "TO",
+    "PF",
+    "+/-"
+]
 
 export {
     SERVER_URL,
     GAMEDAYFORMATTER,
     ENDPOINTS,
     MAPTRICODETOICON,
+    STATS_PREFERENCES
 }

@@ -41,15 +41,16 @@ const Home = () =>
     const [todayGames, setTodayGames] = useState([])
     
     useEffect(() => {
-        fetchGames();
-        console.log(todayGames)
+        const interval = setInterval(() => {
+            console.log('Ran a search');
+            fetchGames();
+          }, 3000);
+          return () => clearInterval(interval);
     },[])
 
     return (
         <>
-        <h1>
-        {GAMEDAYFORMATTER(gameDay)} 
-        </h1>
+        {todayGames.length > 0 && <h1>{GAMEDAYFORMATTER(gameDay)} </h1>}
 
         {todayGames.length > 0 && todayGames.map((game) => 
             <Link to={`/games/${game["gameId"]}`} className='link'>
