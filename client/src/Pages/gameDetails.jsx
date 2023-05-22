@@ -48,18 +48,18 @@ const GameDetails = () =>
 
   return (
     <div style={{"width":'80%', 'display':'flex','flexDirection':'column', 'alignItems': 'center', 'gap':'50px'}}>
-        <GameTotalsBox game={gameData}/>
-        <h1>{gameData["attendance"]}</h1>
-        <ul>
+        {gameData && <GameTotalsBox game={gameData}/>}
+        <table>
+          <th>Name</th>
           {players.map((player) => 
           {
             return (
-            <li>
-              <p>{player}</p>
-            </li>
+            <tr>
+              {player}
+            </tr>
             )
           })}
-        </ul>
+        </table>
     </div>
   )
 }
