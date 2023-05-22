@@ -14,10 +14,10 @@ const SignIn = () => {
 
   useEffect(() => {
     /* global google */
-    google.accounts.id.initialize({
-      client_id: "24437569456-29o4ejhmer5ebfmg3faded33g61kdp58.apps.googleusercontent.com",
-      callback: handleCallbackResponse
-    })
+    // google.accounts.id.initialize({
+    //   id: "24437569456-29o4ejhmer5ebfmg3faded33g61kdp58.apps.googleusercontent.com",
+    //   callback: handleCallbackResponse
+    // })
 
     google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
