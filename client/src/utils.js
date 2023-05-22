@@ -2,7 +2,8 @@ const SERVER_URL = 'http://127.0.0.1:8000'
 
 const ENDPOINTS = 
 {
-    getTodayGames: '/get-today-games'
+    getTodayGames: '/get-today-games',
+    getGameById: '/games/',
 }
 
 const MONTHS = [
@@ -42,6 +43,7 @@ const MAPTRICODETOICON = (tricodeString) =>
             return 3
     }
 }
+
 
 export {
     SERVER_URL,

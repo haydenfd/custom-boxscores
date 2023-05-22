@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from nba_api.stats.endpoints import playercareerstats
-from nba_api.live.nba.endpoints import scoreboard
+from nba_api.live.nba.endpoints import scoreboard, boxscore
 from fastapi.encoders import jsonable_encoder
 
 
@@ -23,6 +23,11 @@ async def get_today_games():
     games = board.games.get_dict()
     return jsonable_encoder(games)
 
+@app.get("/games/{game_id}")
+async def get_game_by_id(game_id:str):
+    game = boxscore.BoxScore(game_id)
+    game = game.get_dict()
+    return jsonable_encoder(game)
 
 @app.get("/")
 def read_root():

@@ -5,7 +5,6 @@ import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
 import { Link } from 'react-router-dom'
 
-
 const Home = () => 
 {
 
@@ -53,7 +52,7 @@ const Home = () =>
         </h1>
 
         {todayGames.length > 0 && todayGames.map((game) => 
-            <Link to='http://www.google.com' className='link'>
+            <Link to={`/games/${game["gameId"]}`} className='link'>
                 <div className='container-wrapper'>
                     <GameContainer game={game}/>
                 </div>
