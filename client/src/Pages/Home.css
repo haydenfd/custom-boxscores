@@ -1,0 +1,34 @@
+
+.link {
+    text-decoration: none;
+    color: black;
+    width: 50%;
+    margin-top: 30px;    
+}
+
+.container-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    cursor: pointer;
+    height: 100%;
+}
+
+.team-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.score-wrapper {
+    flex:2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: last baseline;
+    height: 100%;
+    gap: 16px;
+}

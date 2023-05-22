@@ -3,10 +3,11 @@ import React, {useState, useEffect} from 'react'
 import { SERVER_URL, GAMEDAYFORMATTER, ENDPOINTS } from '../utils'
 import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
+import { Link } from 'react-router-dom'
+
 
 const Home = () => 
 {
-
 
     const parseDateFromResponse = (gameDayString) =>
     {
@@ -39,10 +40,10 @@ const Home = () =>
 
     const [gameDay, setGameDay] = useState({})
     const [todayGames, setTodayGames] = useState([])
+    
     useEffect(() => {
         fetchGames();
         console.log(todayGames)
-    
     },[])
 
     return (
@@ -50,8 +51,13 @@ const Home = () =>
         <h1>
         {GAMEDAYFORMATTER(gameDay)} 
         </h1>
+
         {todayGames.length > 0 && todayGames.map((game) => 
-        <GameContainer game={game}/>
+            <Link to='http://www.google.com' className='link'>
+                <div className='container-wrapper'>
+                    <GameContainer game={game}/>
+                </div>
+            </Link>
         )}
         </>
     )

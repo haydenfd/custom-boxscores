@@ -1,11 +1,10 @@
 .game-container {
-    width: 50%;
+    width: 100%;
     border: 4px solid darkgray;
     display: flex;
     flex-direction: row;
     align-items:center;
     justify-content: start;
-    margin: 30px auto;
     cursor: pointer;
 }
 
@@ -29,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: last baseline;
+    justify-content: center;
     height: 100%;
-    gap: 16px;
+    gap: 6px;
 }

@@ -43,7 +43,8 @@ const LogoFormatter = ({tricode}) => {
     return (
         <>
             {mapTricodeToLogo(tricode)}
-            <h2>{tricode}</h2>
+            <h2 style={{"textDecoration":'none'}}
+            >{tricode}</h2>
         </>
     )
 }
