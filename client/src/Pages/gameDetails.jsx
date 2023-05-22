@@ -200,8 +200,20 @@ import {
 } from 'react-router-dom'
 import axios from 'axios'
 import { ENDPOINTS, SERVER_URL} from '../utils'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 const GameDetails = () => {
+
+  // const convertMinsToReadable = (mins) => {
+  //   const minutes = mins.substring(0)
+  //   console.log(minutes)
+  // }
 
 
   const navigate = useNavigate()
@@ -250,7 +262,7 @@ const GameDetails = () => {
           {gameData.awayTeam && <LogoFormatter tricode={gameData.awayTeam.teamTricode} size={150}/>}
         </div>
         <div className='game-box-score-container'>
-        {gameData && <h3>hayden</h3>}
+        {gameData && <h3>SCORE</h3>}
         </div>
         <div className='game-box-team-container'>
         {gameData.homeTeam && <LogoFormatter tricode={gameData.homeTeam.teamTricode} size={150}/>}
@@ -258,6 +270,86 @@ const GameDetails = () => {
       </div>
 
 
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell align="center">Points</TableCell>
+            <TableCell align="center">FGM</TableCell>
+            <TableCell align="center">FG %</TableCell>
+            <TableCell align="center">3 PTS</TableCell>
+            <TableCell align="center">Assists</TableCell>
+            <TableCell align="center">Rebounds</TableCell>
+            <TableCell align="center">Steals</TableCell>
+            <TableCell align="center">Blocks</TableCell>
+            <TableCell align="center">Minutes</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {homePlayers.map((player) => (
+            <TableRow
+              key={player.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {player.name}
+              </TableCell>
+              <TableCell align="center">{player.statistics.points}</TableCell>
+              <TableCell align="center">{player.statistics.fieldGoalsMade}</TableCell>
+              <TableCell align="center">{player.statistics.fieldGoalsPercentage}</TableCell>
+              <TableCell align="center">{player.statistics.threePointersMade}</TableCell>
+              <TableCell align="center">{player.statistics.assists}</TableCell>
+              <TableCell align="center">{player.statistics.reboundsTotal}</TableCell>
+              <TableCell align="center">{player.statistics.steals}</TableCell>
+              <TableCell align="center">{player.statistics.blocks}</TableCell>
+              <TableCell align="center">{player.statistics.minutes}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell align="center">Points</TableCell>
+            <TableCell align="center">FGM</TableCell>
+            <TableCell align="center">FG %</TableCell>
+            <TableCell align="center">3 PTS</TableCell>
+            <TableCell align="center">Assists</TableCell>
+            <TableCell align="center">Rebounds</TableCell>
+            <TableCell align="center">Steals</TableCell>
+            <TableCell align="center">Blocks</TableCell>
+            <TableCell align="center">Minutes</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {awayPlayers.map((player) => (
+            <TableRow
+              key={player.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {player.name}
+              </TableCell>
+              <TableCell align="center">{player.statistics.points}</TableCell>
+              <TableCell align="center">{player.statistics.fieldGoalsMade}</TableCell>
+              <TableCell align="center">{player.statistics.fieldGoalsPercentage}</TableCell>
+              <TableCell align="center">{player.statistics.threePointersMade}</TableCell>
+              <TableCell align="center">{player.statistics.assists}</TableCell>
+              <TableCell align="center">{player.statistics.reboundsTotal}</TableCell>
+              <TableCell align="center">{player.statistics.steals}</TableCell>
+              <TableCell align="center">{player.statistics.blocks}</TableCell>
+              <TableCell align="center">{player.statistics.minutes}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 
     </div>
   )
