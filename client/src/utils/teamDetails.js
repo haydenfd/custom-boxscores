@@ -228,7 +228,7 @@ const teamDetails =
     },
 ]
 
-const retrieveTeamObject = (tricode) => 
+export const retrieveTeamObject = (tricode) => 
 {
 
     for (let team of teamDetails)
@@ -238,9 +238,4 @@ const retrieveTeamObject = (tricode) =>
             return team
         }
     }
-}
-
-export {
-    teamDetails,
-    retrieveTeamObject,
 }

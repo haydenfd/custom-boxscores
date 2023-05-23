@@ -1,4 +1,4 @@
-const processRawMinutes = (minutes) => {
+export const processRawMinutes = (minutes) => {
     const regex = /PT(\d+)M(\d+)\.\d+S/;
     const match = minutes.match(regex);
   
@@ -9,8 +9,4 @@ const processRawMinutes = (minutes) => {
     }
 
     return null
-}
-
-export {
-    processRawMinutes,
 }

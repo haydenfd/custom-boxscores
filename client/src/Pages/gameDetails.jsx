@@ -6,7 +6,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import axios from 'axios'
-import {endpoints, server_url} from '../utils/server'
+import {endpoints, server_url} from '../utils'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';

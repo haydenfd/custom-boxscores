@@ -1,12 +1,11 @@
 import './Home.css'
 import React, {useState, useEffect} from 'react'
-import {server_url, endpoints} from '../utils/server'
-import { formatGameDayString } from '../utils/gameDayFormatter'
+import {server_url, endpoints} from '../utils'
+import { formatGameDayString } from '../utils'
 import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
 import { Link } from 'react-router-dom'
 
-// import { teamDetails, retrieveTeamObject} from "../utils";
 const Home = () => 
 {
 

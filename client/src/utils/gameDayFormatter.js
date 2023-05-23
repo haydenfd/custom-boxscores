@@ -16,12 +16,8 @@ const months = [
 ]
 
 
-const formatGameDayString = (gameDay) => 
+export const formatGameDayString = (gameDay) => 
 {
     return `${months[parseInt(gameDay.month)]} ${gameDay.date}, ${gameDay.year} games`
 
-}
-
-export {
-    formatGameDayString
 }
