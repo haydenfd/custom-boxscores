@@ -12,5 +12,5 @@
 ### Progress
 
 - The following images display the landing page and game details page on clicking a certain game card container. The UI is continually being refined. 
-![alt text](./client/public/demo1)
-![alt text](./client/public/demo2)
+![alt text](./client/public/demo1.png)
+![alt text](./client/public/demo2.png)
