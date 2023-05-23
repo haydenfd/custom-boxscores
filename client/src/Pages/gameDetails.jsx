@@ -14,6 +14,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TableBuilder from '../Components/Table'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
+
+const cols = ['Name','Points', 'Minutes', 'Assists','Rebounds', 'Steals']
 
 const GameDetails = () => {
 
@@ -23,6 +29,12 @@ const GameDetails = () => {
   const [gameData, setGameData] = useState({})
   const [homePlayers, setHomePlayers] = useState([])
   const [awayPlayers, setAwayPlayers] = useState([])
+
+  const [alignment, setAlignment] = useState();
+  
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
   
   const fetchGameById = async () => {
 
@@ -68,13 +80,37 @@ const GameDetails = () => {
           {gameData.awayTeam && <LogoFormatter tricode={gameData.awayTeam.teamTricode} size={150}/>}
         </div>
         <div className='game-box-score-container'>
-        {gameData && <h3>SCORE</h3>}
+        {gameData.awayTeam && gameData.homeTeam && <h2>{gameData.awayTeam.score} - {gameData.homeTeam.score}</h2>}
+        {gameData && <h2>{gameData.gameStatusText}</h2>}
         </div>
         <div className='game-box-team-container'>
         {gameData.homeTeam && <LogoFormatter tricode={gameData.homeTeam.teamTricode} size={150}/>}
         </div>
       </div>
 
+      <ToggleButtonGroup
+          value={alignment}
+          exclusive
+          onChange={handleAlignment}
+          aria-label="text alignment"
+        >
+          <ToggleButton value="home" 
+            aria-label="left aligned">
+            Home Team
+          </ToggleButton>
+          <ToggleButton value="away" 
+            aria-label="right aligned"
+          >
+            AWAY TEAM
+          </ToggleButton>
+        </ToggleButtonGroup>
+
+
+      {
+        awayPlayers &&
+        <TableBuilder columns={cols} data={awayPlayers}/>
+      }
+{/* 
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -160,7 +196,7 @@ const GameDetails = () => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer> */}
 
     </div>
   )

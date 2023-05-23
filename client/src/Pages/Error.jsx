@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <div>
         <h1>
-            404 Not Found page
+            Uh Oh! This page isn't valid
         </h1>
     </div>
   )

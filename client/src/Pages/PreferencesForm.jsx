@@ -24,39 +24,64 @@ const PreferencesForm = () =>
 
     const boxSx={
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
+        backgroundColor: 'lightgrey',
+        width: '80vw',
+        marginTop: 30,
+        padding: 30,
+        border: '4px solid black',
     }
 
     return (
         <>
-        <ThemeProvider theme={theme}>
-        <h1>Your Preferences</h1>
-        <Box sx={boxSx}>     
-            <FormGroup>
-                <FormControlLabel
-                    control={<Checkbox color="secondary" name="mins"/>} 
-                    label="Minutes" 
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
-                    />
-                <FormControlLabel
-                    control={<Checkbox color="secondary" name="pts"/>} 
-                    label="Points" 
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
-                    />     
-                <FormControlLabel
-                    control={<Checkbox color="secondary" name="ast"/>} 
-                    label="Assists" 
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
-                    />  
-                <FormControlLabel
-                    control={<Checkbox color="secondary" name="pts"/>} 
-                    label="Pts" 
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
-                    />                                                         
-            </FormGroup>
-        </Box>
-        </ThemeProvider>
         </>
+    //     <>
+    //     <ThemeProvider theme={theme}>
+    //     <h1>Your Preferences</h1>
+    //     <Box sx={{
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     backgroundColor: 'lightgrey',
+    //     width: '80vw',
+    //     marginTop: 30,
+    //     padding: 30,
+    //     border: '4px solid black',
+    // }}>     
+    //         <FormGroup>
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="mins"/>} 
+    //                 label="Minutes" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="pts"/>} 
+    //                 label="Points" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="fg"/>} 
+    //                 label="Field Goals Made/Attempted" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />  
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="fg %"/>} 
+    //                 label="Field Goal %" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />                                          
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="ast"/>} 
+    //                 label="Assists" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />  
+    //             <FormControlLabel
+    //                 control={<Checkbox color="secondary" name="reb"/>} 
+    //                 label="Rebounds" 
+    //                 sx={{ '& .MuiSvgIcon-root': { fontSize: 28} }}
+    //                 />                                                         
+    //         </FormGroup>
+    //     </Box>
+    //     </ThemeProvider>
+    //     </>
     )
 }
 

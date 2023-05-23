@@ -11,7 +11,7 @@ const GameContainer = ({game}) =>
 
     return (
         <div className="game-container">
-            <div className="team-container">
+            <div className="team-container away-team">
                 <LogoFormatter tricode={awayTeam} />
                 <h3>{awayTeam}</h3>
             </div>
@@ -20,7 +20,7 @@ const GameContainer = ({game}) =>
                 <h3>{gameStatusText}</h3>
                 <p>{game["seriesText"]}</p>
             </div>
-            <div className="team-container">
+            <div className="team-container home-team">
                 <LogoFormatter tricode={homeTeam} />
                 <h3>{homeTeam}</h3>
             </div>
