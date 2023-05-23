@@ -1,6 +1,6 @@
 ## Custom Boxscores
 
-- Web app is still under development. Please check back in a couple days for an update (should be deployed to this website - *insert URL*).
+- Web app is still under development because my old Mac abruptly stopped working and I nearly finished this project on previous laptop (but did not back the repo up in time). Please check back in a couple days for an update (Final website URL will be attached here)
 - The exhaustive list of python libraries used to build the project API is listed in server/requirements.txt.
 
 ### Stack 
@@ -9,9 +9,8 @@
 - Database - Mongo DB
 - Deployment - AWS
 
-### TODO 
-- Add an alias.txt script for loading all sorts of alias commands
-- Add tabular layout for game displays
-- Add preference form
+### Progress
 
-
+- The following images display the landing page and game details page on clicking a certain game card container. The UI is continually being refined. 
+![alt text](./client/public/demo1)
+![alt text](./client/public/demo2)
