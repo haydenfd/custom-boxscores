@@ -4,7 +4,8 @@ import { SERVER_URL, GAMEDAYFORMATTER, ENDPOINTS } from '../utils'
 import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
 import { Link } from 'react-router-dom'
-
+import { teamDetails } from '../utils/teamDetails'
+import LogoFormatter from '../Components/logoFormatter'
 const Home = () => 
 {
 
@@ -59,6 +60,19 @@ const Home = () =>
                 </div>
             </Link>
         )}
+
+        {/* <div style={{marginTop:"50px", width:"80vw", display: 'flex', flexWrap: 'wrap', gap: '12px'}}>
+    
+        {
+            teamDetails.map((team) => {
+                return (
+                    <div style={{width: '200px',backgroundColor: `${team.hex}`}}>
+                    <LogoFormatter tricode={team.tricode} size={200}/>
+                    </div>
+                )
+            })
+        }
+        </div> */}
         </>
     )
 }
