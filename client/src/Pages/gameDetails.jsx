@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import axios from 'axios'
 import { ENDPOINTS, SERVER_URL} from '../utils'
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,6 +19,7 @@ import TableBuilder from '../Components/Table'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import {retrieveTeamObject} from '../utils/teamDetails'
 
 const table_cols = [
   'NAME', 
@@ -47,6 +49,7 @@ const GameDetails = () => {
   const [homePlayers, setHomePlayers] = useState([])
   const [awayPlayers, setAwayPlayers] = useState([])
 
+
   const [alignment, setAlignment] = useState();
   
   const handleAlignment = (event, newAlignment) => {
@@ -74,9 +77,6 @@ const GameDetails = () => {
           setAwayPlayers((prev) => [...prev,away.players[p]])
         }
 
-        console.log(homePlayers)
-        console.log(awayPlayers)
-        console.log(gameData)
     })
   }
 
@@ -94,14 +94,14 @@ const GameDetails = () => {
       {/* <ArrowBackIcon size={50}/> */}
       <div className="game-box-container">
         <div className='game-box-team-container'>
-          {gameData.awayTeam && <LogoFormatter tricode={gameData.awayTeam.teamTricode} size={150}/>}
+          {gameData.awayTeam && <LogoFormatter color={retrieveTeamObject(gameData.awayTeam.teamTricode)?.hex} tricode={gameData.awayTeam.teamTricode} size={150}/>}
         </div>
         <div className='game-box-score-container'>
         {gameData.awayTeam && gameData.homeTeam && <h2>{gameData.awayTeam.score} - {gameData.homeTeam.score}</h2>}
         {gameData && <h2>{gameData.gameStatusText}</h2>}
         </div>
         <div className='game-box-team-container'>
-        {gameData.homeTeam && <LogoFormatter tricode={gameData.homeTeam.teamTricode} size={150}/>}
+        {gameData.homeTeam && <LogoFormatter color={retrieveTeamObject(gameData.homeTeam.teamTricode)?.hex} tricode={gameData.homeTeam.teamTricode} size={150}/>}
         </div>
       </div>
 {

@@ -4,8 +4,7 @@ import { SERVER_URL, GAMEDAYFORMATTER, ENDPOINTS } from '../utils'
 import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
 import { Link } from 'react-router-dom'
-import { teamDetails } from '../utils/teamDetails'
-import LogoFormatter from '../Components/logoFormatter'
+import { teamDetails, retrieveTeamObject} from "../utils/teamDetails";
 const Home = () => 
 {
 

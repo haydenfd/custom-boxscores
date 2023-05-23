@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as Icons from 'react-nba-logos';
+import "./logoFormatter.css"
 
 
 const mapTricodeToLogo = (tricode, size=86) => 
@@ -72,14 +73,17 @@ const mapTricodeToLogo = (tricode, size=86) =>
 
 }
 
-const LogoFormatter = ({tricode, size=86}) => {
+const LogoFormatter = ({tricode,color, size=86}) => 
+{
+ 
+    const displayedText = <h2 className="displayed-text">{tricode}</h2>
 
+    
     return (
-        <>
+        <div className="logo-formatter-container" style={{backgroundColor: `${color}`}}>
             {mapTricodeToLogo(tricode, size)}
-            {/* <h2 style={{"textDecoration":'none'}}
-            >{tricode}</h2> */}
-        </>
+            <h2 className="displayed-text">{tricode}</h2>
+        </div>
     )
 }
 

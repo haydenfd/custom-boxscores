@@ -64,23 +64,6 @@ let STATS_PREFERENCES = [
     "+/-"
 ]
 
-
-const teamDetailsMapping = {
-
-    ATL: {
-        name: 'Atlanta Hawks',
-        city:'Atlanta',
-        tricode: 'ATL',
-        hex:'#C8102E'
-    },
-    ATL: {
-        name: 'Atlanta Hawks',
-        city:'Atlanta',
-        tricode: 'ATL',
-        hex:'#C8102E'
-    }
-}
-
 export {
     SERVER_URL,
     GAMEDAYFORMATTER,

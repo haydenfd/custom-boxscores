@@ -7,6 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import React, { useEffect } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { processRawMinutes } from '../utils/statsProcessor';
 
 const theme = createTheme({
   typography: {
@@ -20,9 +21,6 @@ const theme = createTheme({
 
 const TableBuilder = ({columns,data}) => {
 
-  useEffect(() =>{
-
-  },[])
 
   return (
   <ThemeProvider theme={theme}>
@@ -47,7 +45,7 @@ const TableBuilder = ({columns,data}) => {
                 <TableCell component="th" align="center" scope="row" sx={{borderRight: '3px solid black',  borderLeft: '3px solid black'}}>
                   {player.name}
                 </TableCell>
-                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.minutes}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{processRawMinutes(player.statistics.minutes)}</TableCell>
                 <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.points}</TableCell>
                 <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.assists}</TableCell>
                 <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.reboundsTotal}</TableCell>

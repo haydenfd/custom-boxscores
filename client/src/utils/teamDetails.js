@@ -1,10 +1,11 @@
+
 const teamDetails = 
 [
     {
         name: 'Hawks',
         city:'Atlanta',
         tricode: 'ATL',
-        hex:'#C8102E'
+        hex:'#C8102E',
     },
     {
         name: 'Celtics',
@@ -197,6 +198,19 @@ const teamDetails =
     },
 ]
 
+const retrieveTeamObject = (tricode) => 
+{
+
+    for (let team of teamDetails)
+    {
+        if (team.tricode === tricode)
+        {
+            return team
+        }
+    }
+}
+
 export {
-    teamDetails
+    teamDetails,
+    retrieveTeamObject,
 }

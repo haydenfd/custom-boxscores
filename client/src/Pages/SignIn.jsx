@@ -14,10 +14,10 @@ const SignIn = () => {
 
   useEffect(() => {
     /* global google */
-    // google.accounts.id.initialize({
-    //   id: "24437569456-29o4ejhmer5ebfmg3faded33g61kdp58.apps.googleusercontent.com",
-    //   callback: handleCallbackResponse
-    // })
+    google.accounts.id.initialize({
+      id: "24437569456-29o4ejhmer5ebfmg3faded33g61kdp58.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    })
 
     google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
@@ -36,10 +36,10 @@ const SignIn = () => {
         <p className='sign-in-box-p'>
           To save your box score preferences, you need to sign into a Google account. If you've never signed up with your Google Account before, don't worry.
         </p>
-        <div id="signInDiv">
-        </div>
-        <h1>Welcome back, {user.name}</h1>
-    </div>
+        {/* <div id="signInDiv">
+        </div> */}
+        {user.length > 0? <p>Welcome Back, User</p>: <div id='signInDiv'></div>}
+     </div>
   )
 }
 
