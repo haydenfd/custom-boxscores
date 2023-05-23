@@ -48,7 +48,8 @@ const teamDetails =
         name: 'Nuggets',
         city:'Denver',
         tricode: 'DEN',
-        hex:'#0E2240'
+        hex:'#0E2240',
+        activeClass: 'active-den'
     },
     {
         name: 'Pistons',
@@ -81,7 +82,8 @@ const teamDetails =
         name: 'Lakers',
         city:'LA',
         tricode: 'LAL',
-        hex:'#552583'
+        hex:'#552583',
+        activeClass: 'active-lal'
     },
     {
         name: 'Clippers',

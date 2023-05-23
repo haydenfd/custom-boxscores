@@ -40,6 +40,11 @@ const table_cols = [
 
 const cols = ['Name','Points', 'Minutes', 'Assists','Rebounds', 'Steals']
 
+function cm(...args) {
+  return args.filter((v) => v).join(" ");
+}
+
+
 const GameDetails = () => {
 
   const navigate = useNavigate()
@@ -49,6 +54,7 @@ const GameDetails = () => {
   const [homePlayers, setHomePlayers] = useState([])
   const [awayPlayers, setAwayPlayers] = useState([])
 
+  const [buttonStatus, setButtonStatus] = useState("register");
 
   const [alignment, setAlignment] = useState();
   
@@ -106,29 +112,29 @@ const GameDetails = () => {
       </div>
 {
   gameData.homeTeam && gameData.awayTeam && (
-    <div>
-      <ToggleButtonGroup
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          aria-label="text alignment"
-        >
-          <ToggleButton value="home" 
-            aria-label="left aligned">
-            {gameData.awayTeam.teamTricode}
-          </ToggleButton>
-          <ToggleButton value="away" 
-            aria-label="right aligned"
-          >
-            {gameData.homeTeam.teamTricode}
-          </ToggleButton>
-        </ToggleButtonGroup>
+    <div className='buttons-container'>
+      <button
+        className={cm("buttonStatus", buttonStatus === "login" && retrieveTeamObject(gameData.awayTeam.teamTricode)?.activeClass)}
+        onClick={() => setButtonStatus("login")}
+      >
+        {gameData.awayTeam?.teamTricode}
+      </button>
+      <button
+        className={cm("buttonStatus", buttonStatus === "register" && retrieveTeamObject(gameData.homeTeam.teamTricode)?.activeClass)}
+        onClick={() => setButtonStatus("register")}
+      >
+        {gameData.homeTeam?.teamTricode}
+      </button>
     </div>
   )
 }
-      {
+      { buttonStatus == 'login' &&
         awayPlayers &&
         <TableBuilder columns={table_cols} data={awayPlayers}/>
+      }
+      { buttonStatus == 'register' &&
+        homePlayers &&
+        <TableBuilder columns={table_cols} data={homePlayers}/>
       }
 {/* 
       <TableContainer component={Paper}>
@@ -223,3 +229,22 @@ const GameDetails = () => {
 }
 
 export default GameDetails;
+
+ {/* <ToggleButtonGroup
+          value={alignment}
+          exclusive
+          size="large"
+          onChange={handleAlignment}
+          aria-label="text alignment"
+          classes={{color: '30px'}}
+      >
+          <ToggleButton value="home" 
+            aria-label="left aligned">
+            {gameData.awayTeam.teamTricode}
+          </ToggleButton>
+          <ToggleButton value="away" 
+            aria-label="right aligned"
+          >
+            {gameData.homeTeam.teamTricode}
+          </ToggleButton>
+        </ToggleButtonGroup> */}

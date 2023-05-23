@@ -89,3 +89,35 @@ h3 {
     align-items: center;
     justify-content: center;
 }
+
+
+.buttons-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+    border: 3px solid black;
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    width: 15%;
+    margin: 30px 0;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.active-lal {
+    color: white;
+    background-color: #552583;
+  }
+  
+.active-den {
+    background-color: #0E2240;
+    color:white;
+}
