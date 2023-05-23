@@ -17,7 +17,24 @@ import Paper from '@mui/material/Paper';
 import TableBuilder from '../Components/Table'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+const table_cols = [
+  'NAME', 
+  'MIN', 
+  'PTS', 
+  'AST', 
+  'REB',
+  'OREB',
+  'DREB', 
+  'STL',
+  'BLK', 
+  'TO',
+  '+/-',
+  'FG',
+  'FT',
+  '3PT'
+]
 
 const cols = ['Name','Points', 'Minutes', 'Assists','Rebounds', 'Steals']
 
@@ -74,7 +91,7 @@ const GameDetails = () => {
 
   return (
     <div className='game-details-wrapper'>
-
+      {/* <ArrowBackIcon size={50}/> */}
       <div className="game-box-container">
         <div className='game-box-team-container'>
           {gameData.awayTeam && <LogoFormatter tricode={gameData.awayTeam.teamTricode} size={150}/>}
@@ -87,7 +104,9 @@ const GameDetails = () => {
         {gameData.homeTeam && <LogoFormatter tricode={gameData.homeTeam.teamTricode} size={150}/>}
         </div>
       </div>
-
+{
+  gameData.homeTeam && gameData.awayTeam && (
+    <div>
       <ToggleButtonGroup
           value={alignment}
           exclusive
@@ -96,19 +115,20 @@ const GameDetails = () => {
         >
           <ToggleButton value="home" 
             aria-label="left aligned">
-            Home Team
+            {gameData.awayTeam.teamTricode}
           </ToggleButton>
           <ToggleButton value="away" 
             aria-label="right aligned"
           >
-            AWAY TEAM
+            {gameData.homeTeam.teamTricode}
           </ToggleButton>
         </ToggleButtonGroup>
-
-
+    </div>
+  )
+}
       {
         awayPlayers &&
-        <TableBuilder columns={cols} data={awayPlayers}/>
+        <TableBuilder columns={table_cols} data={awayPlayers}/>
       }
 {/* 
       <TableContainer component={Paper}>

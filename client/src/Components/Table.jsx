@@ -26,13 +26,13 @@ const TableBuilder = ({columns,data}) => {
 
   return (
   <ThemeProvider theme={theme}>
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{marginTop: '30px'}}>
       <Table sx={{ maxWidth: '100%'}} aria-label="simple table">
-        <TableHead>
-          <TableRow>
+        <TableHead sx={{border:'3px solid black'}}>
+          <TableRow sx={{bgcolor:'dodgerblue'}}>
           {columns.map((col) => {
             return (
-              <TableCell align='center'>{col}</TableCell>
+              <TableCell align='center' sx={{borderRight: '3px solid black'}}>{col}</TableCell>
             )
           })}
           </TableRow>
@@ -43,16 +43,23 @@ const TableBuilder = ({columns,data}) => {
               return (
               <TableRow
                 key={player.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" align="center" scope="row">
+                <TableCell component="th" align="center" scope="row" sx={{borderRight: '3px solid black',  borderLeft: '3px solid black'}}>
                   {player.name}
                 </TableCell>
-                <TableCell align="center">{player.statistics.points}</TableCell>
-                <TableCell align="center">{player.statistics.minutes}</TableCell>
-                <TableCell align="center">{player.statistics.assists}</TableCell>
-                <TableCell align="center">{player.statistics.reboundsTotal}</TableCell>
-                <TableCell align="center">{player.statistics.steals}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.minutes}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.points}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.assists}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.reboundsTotal}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.reboundsOffensive}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.reboundsDefensive}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.steals}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.blocks}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.turnovers}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.plusMinusPoints}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.fieldGoalsMade}-{player.statistics.fieldGoalsAttempted}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.freeThrowsMade}-{player.statistics.freeThrowsAttempted}</TableCell>
+                <TableCell align="center" sx={{borderRight: '3px solid black'}}>{player.statistics.threePointersMade}-{player.statistics.threePointersAttempted}</TableCell>
               </TableRow>
               )
             })
