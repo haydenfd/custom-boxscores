@@ -6,7 +6,7 @@ import {
   useParams,
 } from 'react-router-dom'
 import axios from 'axios'
-import { ENDPOINTS, SERVER_URL} from '../utils'
+import {endpoints, server_url} from '../utils/server'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,7 +19,7 @@ import TableBuilder from '../Components/Table'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {retrieveTeamObject} from '../utils/teamDetails'
+import {retrieveTeamObject} from '../utils'
 
 const table_cols = [
   'NAME', 
@@ -64,7 +64,7 @@ const GameDetails = () => {
   
   const fetchGameById = async () => {
 
-    const url = `${SERVER_URL}${ENDPOINTS.getGameById}${gameId}`
+    const url = `${server_url}${endpoints.getGameById}${gameId}`
     
     axios.get(url).then((response) => 
     {

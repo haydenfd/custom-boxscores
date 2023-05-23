@@ -1,7 +1,7 @@
 import React from "react"
 import './gameContainer.css'
 import LogoFormatter from "./logoFormatter"
-import { retrieveTeamObject } from "../utils/teamDetails"
+import { retrieveTeamObject } from "../utils"
 
 const GameContainer = ({game}) => 
 {

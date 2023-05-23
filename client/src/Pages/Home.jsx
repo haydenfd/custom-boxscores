@@ -1,10 +1,12 @@
 import './Home.css'
 import React, {useState, useEffect} from 'react'
-import { SERVER_URL, GAMEDAYFORMATTER, ENDPOINTS } from '../utils'
+import {server_url, endpoints} from '../utils/server'
+import { formatGameDayString } from '../utils/gameDayFormatter'
 import axios from 'axios'
 import GameContainer from '../Components/gameContainer'
 import { Link } from 'react-router-dom'
-import { teamDetails, retrieveTeamObject} from "../utils/teamDetails";
+
+// import { teamDetails, retrieveTeamObject} from "../utils";
 const Home = () => 
 {
 
@@ -26,7 +28,7 @@ const Home = () =>
 
     const fetchGames = async () => 
     {
-        const url = `${SERVER_URL}${ENDPOINTS.getTodayGames}`
+        const url = `${server_url}${endpoints.getTodayGames}`
     
         axios.get(url).then((response) => 
         {
@@ -50,7 +52,7 @@ const Home = () =>
 
     return (
         <>
-        {todayGames.length > 0 && <h1>{GAMEDAYFORMATTER(gameDay)} </h1>}
+        {todayGames.length > 0 && <h1>{formatGameDayString(gameDay)} </h1>}
 
         {todayGames.length > 0 && todayGames.map((game) => 
             <Link to={`/games/${game["gameId"]}`} className='link'>
