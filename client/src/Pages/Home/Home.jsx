@@ -45,14 +45,14 @@ export const Home = () =>
         const interval = setInterval(() => {
             console.log('Ran a search');
             fetchGames();
-          }, 3000);
+          }, 5000);
           return () => clearInterval(interval);
     },[])
 
     return (
         <>
         {
-            todayGames.length > 0?  (
+            todayGames.length > 0 ?  (
                 <>
                     <h1>{formatGameDayString(gameDay)} </h1>
                     {todayGames.length > 0 && todayGames.map((game) => 

@@ -18,9 +18,9 @@ import Paper from '@mui/material/Paper';
 import {TableBuilder} from '../../Components/Table'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const table_cols = [
+const table_cols = 
+[
   'NAME', 
   'MIN', 
   'PTS', 
@@ -55,12 +55,6 @@ export const GameDetails = () => {
 
   const [buttonStatus, setButtonStatus] = useState("register");
 
-  const [alignment, setAlignment] = useState();
-  
-  const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
-  };
-  
   const fetchGameById = async () => {
 
     const url = `${server_url}${endpoints.getGameById}${gameId}`
@@ -69,6 +63,7 @@ export const GameDetails = () => {
     {
         let data = response.data["game"]
         setGameData(data)
+        console.log(data)
 
         const home = data["homeTeam"]; const away = data["awayTeam"]
 
@@ -95,18 +90,26 @@ export const GameDetails = () => {
   }, [])
 
   return (
+    
     <div className='game-details-wrapper'>
-      {/* <ArrowBackIcon size={50}/> */}
       <div className="game-box-container">
         <div className='game-box-team-container'>
-          {gameData.awayTeam && <LogoFormatter color={retrieveTeamObject(gameData.awayTeam.teamTricode)?.hex} tricode={gameData.awayTeam.teamTricode} size={150}/>}
+          {gameData.awayTeam && <LogoFormatter color={retrieveTeamObject(gameData.awayTeam.teamTricode)?.hex} tricode={gameData.awayTeam.teamTricode} size={130}/>}
         </div>
         <div className='game-box-score-container'>
-        {gameData.awayTeam && gameData.homeTeam && <h2>{gameData.awayTeam.score} - {gameData.homeTeam.score}</h2>}
-        {gameData && <h2>{gameData.gameStatusText}</h2>}
+        {
+          gameData && (
+            <div className='game-box-score-subcontainer'>
+              <h1>{gameData?.awayTeam?.score} - {gameData?.homeTeam?.score}</h1>
+              <h2>{gameData.gameStatusText}</h2>
+            </div>
+          )
+        }
+        {/* {gameData.homeTeam && gameData.homeTeam && <h2>{gameData.awayTeam.score} - {gameData.homeTeam.score}</h2>}
+        {gameData && <h2>{gameData.gameStatusText}</h2>} */}
         </div>
         <div className='game-box-team-container'>
-        {gameData.homeTeam && <LogoFormatter color={retrieveTeamObject(gameData.homeTeam.teamTricode)?.hex} tricode={gameData.homeTeam.teamTricode} size={150}/>}
+        {gameData.homeTeam && <LogoFormatter color={retrieveTeamObject(gameData.homeTeam.teamTricode)?.hex} tricode={gameData.homeTeam.teamTricode} size={130}/>}
         </div>
       </div>
 {
