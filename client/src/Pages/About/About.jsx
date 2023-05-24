@@ -1,7 +1,7 @@
 import React from 'react'
 import './About.css'
 
-const About = () => {
+export const About = () => {
   return (
     <div>
         <h1>About page</h1>
@@ -10,4 +10,3 @@ const About = () => {
   )
 }
 
-export default About

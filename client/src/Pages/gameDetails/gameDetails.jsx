@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './gameDetails.css'
-import LogoFormatter from '../Components/logoFormatter'
+import {LogoFormatter} from '../../Components/logoFormatter'
 import {
   useNavigate,
   useParams,
 } from 'react-router-dom'
 import axios from 'axios'
-import {endpoints, server_url} from '../utils'
+import {endpoints, server_url, retrieveTeamObject} from '../../utils'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,11 +15,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import TableBuilder from '../Components/Table'
+import {TableBuilder} from '../../Components/Table'
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {retrieveTeamObject} from '../utils'
 
 const table_cols = [
   'NAME', 
@@ -45,7 +44,7 @@ function cm(...args) {
 }
 
 
-const GameDetails = () => {
+export const GameDetails = () => {
 
   const navigate = useNavigate()
   const { gameId } = useParams()
@@ -228,7 +227,6 @@ const GameDetails = () => {
   )
 }
 
-export default GameDetails;
 
  {/* <ToggleButtonGroup
           value={alignment}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import './SignIn.css'
 import jwt_decode from 'jwt-decode'
 
-const SignIn = () => {
+export const SignIn = () => {
 
   const [user, setUser] = useState({})
 
@@ -43,4 +43,3 @@ const SignIn = () => {
   )
 }
 
-export default SignIn

@@ -19,7 +19,7 @@ const theme = createTheme({
   });
   
 
-const PreferencesForm = () => 
+export const PreferencesForm = () => 
 {
 
     const boxSx={
@@ -85,7 +85,6 @@ const PreferencesForm = () =>
     )
 }
 
-export default PreferencesForm
 
 // const PreferencesForm = () => {
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import * as Icons from 'react-nba-logos';
 import "./logoFormatter.css"
 
@@ -73,7 +73,7 @@ const mapTricodeToLogo = (tricode, size=86) =>
 
 }
 
-const LogoFormatter = ({tricode,color, size=86}) => 
+export const LogoFormatter = ({tricode,color, size=86}) => 
 {
  
     const displayedText = <h2 className="displayed-text">{tricode}</h2>
@@ -87,5 +87,3 @@ const LogoFormatter = ({tricode,color, size=86}) =>
     )
 }
 
-
-export default LogoFormatter;

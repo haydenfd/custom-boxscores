@@ -1,0 +1,1 @@
+export { LogoFormatter } from './logoFormatter'

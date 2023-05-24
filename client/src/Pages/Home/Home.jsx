@@ -1,12 +1,12 @@
 import './Home.css'
 import React, {useState, useEffect} from 'react'
-import {server_url, endpoints} from '../utils'
-import { formatGameDayString } from '../utils'
+import {server_url, endpoints} from '../../utils'
+import { formatGameDayString } from '../../utils'
 import axios from 'axios'
-import GameContainer from '../Components/gameContainer'
+import {GameContainer} from '../../Components/gameContainer'
 import { Link } from 'react-router-dom'
 
-const Home = () => 
+export const Home = () => 
 {
 
     const parseDateFromResponse = (gameDayString) =>
@@ -76,7 +76,4 @@ const Home = () =>
         </>
     )
 }
-
-
-export default Home;
 

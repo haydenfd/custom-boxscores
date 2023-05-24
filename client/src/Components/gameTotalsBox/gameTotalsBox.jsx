@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import './gameTotalsBox.css'
-import LogoFormatter from './logoFormatter'
+// import React, {useState, useEffect} from 'react'
+// import './gameTotalsBox.css'
+// import LogoFormatter from './logoFormatter'
 
-const GameTotalsBox = ({game}) => 
+export const GameTotalsBox = ({game}) => 
 {
   return (
     <>
@@ -33,4 +33,3 @@ const GameTotalsBox = ({game}) =>
   )
 }
 
-export default GameTotalsBox

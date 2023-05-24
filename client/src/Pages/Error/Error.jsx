@@ -1,7 +1,7 @@
 import React from 'react'
 import './Error.css'
 
-const Error = () => {
+export const Error = () => {
   return (
     <div>
         <h1>
@@ -11,4 +11,3 @@ const Error = () => {
   )
 }
 
-export default Error

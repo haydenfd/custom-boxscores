@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import Nav from './Components/Nav'
-import Home from './Pages/Home';
-import PreferencesForm from './Pages/PreferencesForm';
-import About from './Pages/About';
-import SignIn from './Pages/SignIn';
-import Error from './Pages/Error';
-import GameDetails from './Pages/gameDetails';
+import {Nav} from './Components/Nav'
+import {Home} from './Pages/Home';
+import {PreferencesForm} from './Pages/PreferencesForm';
+import {About} from './Pages/About';
+import {SignIn} from './Pages/SignIn';
+import {Error} from './Pages/Error';
+import {GameDetails} from './Pages/gameDetails';
 
 import {
   BrowserRouter as Router, 

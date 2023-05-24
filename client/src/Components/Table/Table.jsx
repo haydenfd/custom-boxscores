@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import React, { useEffect } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { processRawMinutes } from '../utils';
+import { processRawMinutes } from '../../utils';
 
 const theme = createTheme({
   typography: {
@@ -19,7 +19,7 @@ const theme = createTheme({
   },
 });
 
-const TableBuilder = ({columns,data}) => {
+export const TableBuilder = ({columns,data}) => {
 
 
   return (
@@ -69,4 +69,3 @@ const TableBuilder = ({columns,data}) => {
   )
 }
 
-export default TableBuilder

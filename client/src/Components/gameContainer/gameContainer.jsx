@@ -1,9 +1,9 @@
 import React from "react"
 import './gameContainer.css'
-import LogoFormatter from "./logoFormatter"
-import { retrieveTeamObject } from "../utils"
+import {LogoFormatter} from "../logoFormatter"
+import { retrieveTeamObject } from "../../utils"
 
-const GameContainer = ({game}) => 
+export const GameContainer = ({game}) => 
 {
     const homeTeam = game["homeTeam"]["teamTricode"]
     const awayTeam = game["awayTeam"]["teamTricode"]
@@ -29,4 +29,3 @@ const GameContainer = ({game}) =>
     )
 }
 
-export default GameContainer
