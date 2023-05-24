@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from nba_api.stats.endpoints import playercareerstats
 from nba_api.live.nba.endpoints import scoreboard, boxscore
 from fastapi.encoders import jsonable_encoder
+from nba_api.stats.library.parameters import LeagueID
 
 
 app = FastAPI()

@@ -52,7 +52,7 @@ export const Home = () =>
     return (
         <>
         {
-            todayGames.length > 0 ?  (
+            todayGames.length == 0 ?  (
                 <>
                     <h1>{formatGameDayString(gameDay)} </h1>
                     {todayGames.length > 0 && todayGames.map((game) => 
