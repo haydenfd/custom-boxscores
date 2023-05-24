@@ -51,15 +51,27 @@ export const Home = () =>
 
     return (
         <>
-        {todayGames.length > 0 && <h1>{formatGameDayString(gameDay)} </h1>}
-
-        {todayGames.length > 0 && todayGames.map((game) => 
-            <Link to={`/games/${game["gameId"]}`} className='link'>
+        {
+            todayGames.length > 0?  (
+                <>
+                    <h1>{formatGameDayString(gameDay)} </h1>
+                    {todayGames.length > 0 && todayGames.map((game) => 
+                    <Link to={`/games/${game["gameId"]}`} className='link'>
                 <div className='container-wrapper'>
                     <GameContainer game={game}/>
                 </div>
             </Link>
         )}
+                </>
+            ):(
+            <div className='no-games-container'>
+                    <h1>{formatGameDayString(gameDay)} </h1>
+                    <p className='no-games-p'>No games going on today. Maybe go outside and touch some grass?</p>
+            </div>
+            )
+        }
+        {/* {todayGames.length > 0 && <h1>{formatGameDayString(gameDay)} </h1>} */}
+
 
         {/* <div style={{marginTop:"50px", width:"80vw", display: 'flex', flexWrap: 'wrap', gap: '12px'}}>
     

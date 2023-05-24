@@ -3,8 +3,8 @@ export const processRawMinutes = (minutes) => {
     const match = minutes.match(regex);
   
     if (match) {
-      const minutes = parseInt(match[1], 10);
-      const seconds = parseInt(match[2], 10);
+      const minutes = match[1]
+      const seconds = match[2]
       return `${minutes}:${seconds}`
     }
 
