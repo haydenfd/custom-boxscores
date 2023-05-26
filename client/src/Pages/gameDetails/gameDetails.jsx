@@ -45,6 +45,36 @@ export const GameDetails = () => {
 
   const [buttonStatus, setButtonStatus] = useState("register");
 
+  const pollForChanges = async () => {
+
+    const url = `${server_url}${endpoints.getGameById}${gameId}`
+    
+    axios.get(url).then((response) => 
+    {
+        let data = response.data["game"]
+        setGameData(data)
+        console.log(data)
+
+        const home = data["homeTeam"]; const away = data["awayTeam"]
+
+        for (let p = 0; p < home.players.length; p++)
+        {
+          console.log(home.players[p])
+          console.log(homePlayers)
+          
+        }
+
+        for (let p = 0; p < away.players.length; p++)
+        {
+          if (away.players[p] !== awayPlayers[p])
+          {
+          }
+        }
+
+    })
+
+  }
+
   const fetchGameById = async () => {
 
     const url = `${server_url}${endpoints.getGameById}${gameId}`
@@ -79,13 +109,13 @@ export const GameDetails = () => {
       fetchGameById()
       const interval = setInterval(() => {
         console.log('Ran iter')
-        setGameData({})
-        setAwayPlayers([])
-        setHomePlayers([])
-        setHomeTeam('')
-        setAwayTeam('')
-        fetchGameById();
-      }, 6000);
+        // setGameData({})
+        // setAwayPlayers([])
+        // setHomePlayers([])
+        // setHomeTeam('')
+        // setAwayTeam('')
+        pollForChanges();
+      }, 10000);
       return () => clearInterval(interval);
 
   }, [])
