@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 
 export const Home = () => 
 {
-
     const parseDateFromResponse = (gameDayString) =>
     {
         const regex = /^(\d{4})-(\d{2})-(\d{2})T/;
@@ -32,6 +31,7 @@ export const Home = () =>
         axios.get(url).then((response) => 
         {
             let data = response.data
+            console.log(data)
             let gameDayString = data[0]["gameEt"]
             setTodayGames(data)
             parseDateFromResponse(gameDayString)
@@ -70,21 +70,6 @@ export const Home = () =>
             </div>
             )
         }
-        {/* {todayGames.length > 0 && <h1>{formatGameDayString(gameDay)} </h1>} */}
-
-
-        {/* <div style={{marginTop:"50px", width:"80vw", display: 'flex', flexWrap: 'wrap', gap: '12px'}}>
-    
-        {
-            teamDetails.map((team) => {
-                return (
-                    <div style={{width: '200px',backgroundColor: `${team.hex}`}}>
-                    <LogoFormatter tricode={team.tricode} size={200}/>
-                    </div>
-                )
-            })
-        }
-        </div> */}
         </>
     )
 }

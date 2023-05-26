@@ -1,4 +1,37 @@
-.form-wrapper {
-    width: 90%;
+.preferences-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+}
+
+.submit-preferences-button {
+    width: 150px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 500;
+    font-size: 22px;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+    outline: 0;
+    border: 0;
+}
+
+
+.options-container {
+    width: 80%;
+    display: inline-grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 40px 0;
+}
+
+.submit-preferences-button:hover {
+    /* background-color: #76C5FF; */
+    color: black;
+    transform: scale(1.05);
 }

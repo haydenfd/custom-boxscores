@@ -1,0 +1,27 @@
+.checkbox-wrapper {
+    display: flex;
+}
+
+span {
+    font-size: 22px;
+}
+
+
+.checkbox-wrapper input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 0.15em solid dodgerblue;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+  }
+
+  input.checked {
+    background-color: dodgerblue;
+    position: relative;
+  }
