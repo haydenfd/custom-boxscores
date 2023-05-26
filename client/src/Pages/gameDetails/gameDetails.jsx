@@ -2,22 +2,11 @@ import React, {useState, useEffect} from 'react'
 import './gameDetails.css'
 import {LogoFormatter} from '../../Components/logoFormatter'
 import {
-  useNavigate,
   useParams,
 } from 'react-router-dom'
 import axios from 'axios'
 import {endpoints, server_url, retrieveTeamObject} from '../../utils'
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import {TableBuilder} from '../../Components/Table'
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import {TableBuilder} from '../../Components/TableBuilder'
 
 const table_cols = 
 [
@@ -32,12 +21,12 @@ const table_cols =
   'BLK', 
   'TO',
   '+/-',
-  'FG',
-  'FT',
-  '3PT'
+  // 'FG',
+  // 'FT',
+  // '3PT'
 ]
 
-const cols = ['Name','Points', 'Minutes', 'Assists','Rebounds', 'Steals']
+// const cols = ['Name','Points', 'Minutes', 'Assists','Rebounds', 'Steals']
 
 function cm(...args) {
   return args.filter((v) => v).join(" ");
@@ -46,12 +35,13 @@ function cm(...args) {
 
 export const GameDetails = () => {
 
-  const navigate = useNavigate()
   const { gameId } = useParams()
 
   const [gameData, setGameData] = useState({})
   const [homePlayers, setHomePlayers] = useState([])
   const [awayPlayers, setAwayPlayers] = useState([])
+  const [homeTeam, setHomeTeam] = useState('')
+  const [awayTeam, setAwayTeam] = useState('')
 
   const [buttonStatus, setButtonStatus] = useState("register");
 
@@ -67,8 +57,12 @@ export const GameDetails = () => {
 
         const home = data["homeTeam"]; const away = data["awayTeam"]
 
+        setHomeTeam(retrieveTeamObject(home["teamTricode"]))
+        setAwayTeam(retrieveTeamObject(away["teamTricode"]))
+
         for (let p = 0; p < home.players.length; p++)
         {
+          console.log(`Added ${home.players[p]["name"]}`)
           setHomePlayers((prev) => [...prev,home.players[p]])
         }
 
@@ -81,63 +75,121 @@ export const GameDetails = () => {
   }
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   console.log('Ran loop');
-    //   fetchGameById();
-    // }, 10000);
-    // return () => clearInterval(interval);
-      fetchGameById();
+
+      fetchGameById()
+      const interval = setInterval(() => {
+        console.log('Ran iter')
+        setGameData({})
+        setAwayPlayers([])
+        setHomePlayers([])
+        setHomeTeam('')
+        setAwayTeam('')
+        fetchGameById();
+      }, 6000);
+      return () => clearInterval(interval);
+
   }, [])
 
   return (
-    
-    <div className='game-details-wrapper'>
-      <div className="game-box-container">
-        <div className='game-box-team-container'>
-          {gameData.awayTeam && <LogoFormatter color={retrieveTeamObject(gameData.awayTeam.teamTricode)?.hex} tricode={gameData.awayTeam.teamTricode} size={130}/>}
-        </div>
-        <div className='game-box-score-container'>
-        {
-          gameData && (
+    <>
+    {gameData && homeTeam && awayTeam? 
+    (
+      <div className="game-details-wrapper">
+
+        <div className="game-box-container">
+          <div className="game-box-team-container">
+          <LogoFormatter color={awayTeam["hex"]} tricode={awayTeam["tricode"]} size={130}/>
+          </div>
+          <div className='game-box-score-container'>
             <div className='game-box-score-subcontainer'>
               <h1>{gameData?.awayTeam?.score} - {gameData?.homeTeam?.score}</h1>
               <h2>{gameData.gameStatusText}</h2>
             </div>
-          )
-        }
-        {/* {gameData.homeTeam && gameData.homeTeam && <h2>{gameData.awayTeam.score} - {gameData.homeTeam.score}</h2>}
-        {gameData && <h2>{gameData.gameStatusText}</h2>} */}
         </div>
-        <div className='game-box-team-container'>
-        {gameData.homeTeam && <LogoFormatter color={retrieveTeamObject(gameData.homeTeam.teamTricode)?.hex} tricode={gameData.homeTeam.teamTricode} size={130}/>}
+          <div className='game-box-team-container'>
+          <LogoFormatter color={homeTeam["hex"]} tricode={homeTeam["tricode"]} size={130}/>
+          </div>
         </div>
+
+
+      <div className="buttons-container">
+        <button
+          className={cm("buttonStatus", buttonStatus === "login" && awayTeam.activeClass)}
+          onClick={() => setButtonStatus("login")}
+        > {awayTeam['tricode']} </button>
+        <button
+          className={cm("buttonStatus", buttonStatus === "register" && homeTeam.activeClass)}
+          onClick={() => setButtonStatus("register")}
+        > {homeTeam['tricode']}</button>
       </div>
-{
-  gameData.homeTeam && gameData.awayTeam && (
-    <div className='buttons-container'>
-      <button
-        className={cm("buttonStatus", buttonStatus === "login" && retrieveTeamObject(gameData.awayTeam.teamTricode)?.activeClass)}
-        onClick={() => setButtonStatus("login")}
-      >
-        {gameData.awayTeam?.teamTricode}
-      </button>
-      <button
-        className={cm("buttonStatus", buttonStatus === "register" && retrieveTeamObject(gameData.homeTeam.teamTricode)?.activeClass)}
-        onClick={() => setButtonStatus("register")}
-      >
-        {gameData.homeTeam?.teamTricode}
-      </button>
-    </div>
+
+      { buttonStatus === 'login' &&
+        <TableBuilder columns={table_cols} data={awayPlayers} tricode={awayTeam["hex"]}/>
+      }
+      { buttonStatus === 'register' &&
+        <TableBuilder columns={table_cols} data={homePlayers} tricode={homeTeam["hex"]}/>
+      }
+      </div>
+    )
+    : 
+    (<></>)
+    }
+    </>
   )
 }
-      { buttonStatus == 'login' &&
-        awayPlayers &&
-        <TableBuilder columns={table_cols} data={awayPlayers}/>
-      }
-      { buttonStatus == 'register' &&
-        homePlayers &&
-        <TableBuilder columns={table_cols} data={homePlayers}/>
-      }
+//     <div className='game-details-wrapper'>
+//       <div className="game-box-container">
+//         <div className='game-box-team-container'>
+//           {awayTeam && <LogoFormatter color={awayTeam["hex"]} tricode={awayTeam["tricode"]} size={130}/>}
+//         </div>
+
+        // <div className='game-box-score-container'>
+        // {
+        //   gameData && (
+        //     <div className='game-box-score-subcontainer'>
+        //       <h1>{gameData?.awayTeam?.score} - {gameData?.homeTeam?.score}</h1>
+        //       <h2>{gameData.gameStatusText}</h2>
+        //     </div>
+        //   )
+        // }
+  
+        // </div>
+      //   <div className='game-box-team-container'>
+      //   {homeTeam && <LogoFormatter color={homeTeam["hex"]} tricode={homeTeam["tricode"]} size={130}/>}
+      //   </div>
+      // </div>
+
+// {
+//   gameData.homeTeam && gameData.awayTeam && (
+//     <div className='buttons-container'>
+      // <button
+      //   className={cm("buttonStatus", buttonStatus === "login" && retrieveTeamObject(gameData.awayTeam.teamTricode)?.activeClass)}
+      //   onClick={() => setButtonStatus("login")}
+      // >
+      //   {gameData.awayTeam?.teamTricode}
+      // </button>
+      // <button
+      //   className={cm("buttonStatus", buttonStatus === "register" && retrieveTeamObject(gameData.homeTeam.teamTricode)?.activeClass)}
+      //   onClick={() => setButtonStatus("register")}
+      // >
+      //   {gameData.homeTeam?.teamTricode}
+      // </button>
+//     </div>
+//   )
+// }
+      // { buttonStatus == 'login' &&
+      //   awayPlayers &&
+      //   <TableBuilder columns={table_cols} data={awayPlayers}/>
+      // }
+      // { buttonStatus == 'register' &&
+      //   homePlayers &&
+      //   <TableBuilder columns={table_cols} data={homePlayers}/>
+      // }
+
+// </div>
+
+
+
 {/* 
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -226,26 +278,3 @@ export const GameDetails = () => {
       </Table>
     </TableContainer> */}
 
-    </div>
-  )
-}
-
-
- {/* <ToggleButtonGroup
-          value={alignment}
-          exclusive
-          size="large"
-          onChange={handleAlignment}
-          aria-label="text alignment"
-          classes={{color: '30px'}}
-      >
-          <ToggleButton value="home" 
-            aria-label="left aligned">
-            {gameData.awayTeam.teamTricode}
-          </ToggleButton>
-          <ToggleButton value="away" 
-            aria-label="right aligned"
-          >
-            {gameData.homeTeam.teamTricode}
-          </ToggleButton>
-        </ToggleButtonGroup> */}
