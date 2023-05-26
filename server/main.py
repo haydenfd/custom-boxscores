@@ -18,6 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/get-today-games")
 async def get_today_games():
     board = scoreboard.ScoreBoard()

@@ -1,76 +1,64 @@
 import './Home.css'
 import React, {useState, useEffect} from 'react'
 import {server_url, endpoints} from '../../utils'
-import { formatGameDayString } from '../../utils'
 import axios from 'axios'
 import {GameContainer} from '../../Components/gameContainer'
 import { Link } from 'react-router-dom'
 
-export const Home = () => 
-{
-    const parseDateFromResponse = (gameDayString) =>
-    {
-        const regex = /^(\d{4})-(\d{2})-(\d{2})T/;
-        const match = regex.exec(gameDayString);
 
-        if (match)
-        {
-            const year = match[1]; const month = match[2]; const date = match[3];
-            setGameDay ({
-                year: year,
-                month: month,
-                date: date,
-            })
-        }
-    }
+export const Home = () => {
 
-    const fetchGames = async () => 
+    const fetchLandingData = async () => 
     {
-        const url = `${server_url}${endpoints.getTodayGames}`
+        const URL = `${server_url}${endpoints.getTodayGames}`
     
-        axios.get(url).then((response) => 
+        axios.get(URL).then((response) => 
         {
-            let data = response.data
-            console.log(data)
-            let gameDayString = data[0]["gameEt"]
-            setTodayGames(data)
-            parseDateFromResponse(gameDayString)
+            setTodaysGames(response.data)
+
+            const date = new Date(response.data[0]["gameEt"]);
+            const options = {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            };
+            setGameDate(date.toLocaleString('en-US', options))
         })
     }
 
-    const [gameDay, setGameDay] = useState({})
-    const [todayGames, setTodayGames] = useState([])
+    const [gameDate, setGameDate] = useState("")
+    const [todaysGames, setTodaysGames] = useState([])
+
+    const x = 12500
     
     useEffect(() => {
+
+        fetchLandingData();
+
         const interval = setInterval(() => {
-            console.log('Ran a search');
-            fetchGames();
-          }, 5000);
+            console.log('Ran iter')
+            fetchLandingData();
+          }, x);
           return () => clearInterval(interval);
-    },[])
+    }, [])
+
 
     return (
         <>
-        {
-            todayGames.length == 0 ?  (
-                <>
-                    <h1>{formatGameDayString(gameDay)} </h1>
-                    {todayGames.length > 0 && todayGames.map((game) => 
-                    <Link to={`/games/${game["gameId"]}`} className='link'>
-                <div className='container-wrapper'>
-                    <GameContainer game={game}/>
-                </div>
-            </Link>
-        )}
-                </>
-            ):(
-            <div className='no-games-container'>
-                    <h1>{formatGameDayString(gameDay)} </h1>
-                    <p className='no-games-p'>No games going on today. Maybe go outside and touch some grass?</p>
-            </div>
-            )
-        }
+            {
+                gameDate? (
+                    <>
+                        <h1>{gameDate} games</h1>
+                        {todaysGames.length > 0 && todaysGames.map((game) => 
+                        <Link to={`/games/${game["gameId"]}`} className='link'>
+                    <div className='container-wrapper'>
+                        <GameContainer game={game}/>
+                    </div>
+                </Link>
+            )}
+                    </>
+                ) : <></>
+            }
         </>
     )
 }
-

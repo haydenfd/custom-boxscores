@@ -1,1 +1,0 @@
-export {GameTotalsBox} from './gameTotalsBox'

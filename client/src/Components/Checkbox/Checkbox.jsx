@@ -13,12 +13,10 @@ export const Checkbox = ({label, checked, value}) =>
   {
     if (e.target.checked)
     {
-      console.log('Checked')
       setPreferences((previous) => [...previous, value])
     }
 
     else {
-      console.log('Unchecked')
       setPreferences((current) =>
       current.filter((pref) => pref !== value)
     )}
@@ -40,9 +38,3 @@ export const Checkbox = ({label, checked, value}) =>
     </div>
   )
 }
-
-
-// () => {
-//   setIsChecked((prev) => !prev)
-//   console.log(value)
-// }
